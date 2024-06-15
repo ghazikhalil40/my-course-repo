@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Online Courses</title>
+    <b>Congratulations, {{ user.first_name }}!</b> You have passed the exam and completed the course with score {{ grade }}/100
+    
 </head>
 <body>
-
+    
+    {% for question in course.question_set.all %}
+    <div class="card mt-1">
+        <div class="card-header"><h5>{{ question.content }}</h5></div>
+        <div class="form-group">
+            {% for choice in question.choice_set.all %}
+            <div class="form-check">
+                {% if choice.is_correct and choice in choices %}
+                <div class="text-success">Correct answer: {{ choice.content }}</div>
+                {% else %}{% if choice.is_correct and not choice in choices %}
+               
+                {% else %}{% if not choice.is_correct and choice in choices %}
+                <div class="text-danger">Wrong answer: {{ choice.content }}</div>
+                {% else %}
+                <div>{{ choice.content }}</div>
+                
+                {% endif %}{% endif %}{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
  <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
         <div class="navbar-header">
