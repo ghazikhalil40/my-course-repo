@@ -2,58 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Online Course</title>
 </head>
 <body>
 
 <!-- Navigation bar -->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'onlinecourse:index' %}">Home</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Online Course</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Courses
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">All Courses</a>
+                        <a class="dropdown-item" href="#">Enrolled Courses</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'onlinecourse:contact_us' %}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'onlinecourse:about_us' %}">About Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                <li>
-                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
-                    <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Welcome, {{ user.first_name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
+                    </li>
                 {% else %}
-                <li>
-                    <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Username" name="username" >
-                            <input type="password" class="form-control" placeholder="Password" name="password" >
-                            <button class="btn btn-primary" type="submit">Login</button>
-                            <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
-                        </div>
-                    </form>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-login-modal" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Stylize Login form -->
-    <form action="{% url 'onlinecourse:login' %}" method="post">
-        {% csrf_token %}
-        <div class="container"> <!--Style root div with .container class -->
-            <h1>Login</h1>
-            <div class="form-group"> <!--Style second div with .form-group class -->
-              <label for="username"><b>User Name</b></label>
-              <input id="username" class="form-control" type="text" placeholder="Enter User Name: " name="username" required> <!--Style input with .form-control class -->
-              <label for="psw"><b>Password</b></label>
-              <input id="psw" class="form-control" type="psw"  placeholder="Enter Password: " name="password" required> <!--Style input with .form-control class -->
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            {% if message %}
-              <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
-                {{ message }}
-              </div>
-            {% endif %}
-            <button class="btn btn-primary" type="submit">Login</button> <!--Style button with .btn and .btn-primary class -->
+            <div class="modal-body">
+                <form action="{% url 'onlinecourse:login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
+</div>
 
 </body>
+</html>
