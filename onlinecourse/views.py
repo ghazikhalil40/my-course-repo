@@ -12,6 +12,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 # Create your views here.
+
 def show_exam_result(request, course_id, submission_id):
     context = {}
     course = get_object_or_404(Course, pk=course_id)
@@ -66,7 +67,7 @@ def login_request(request):
     context = {}
     if request.method == "POST":
         username = request.POST['username']
-        password = request.POST['psw']
+        password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
@@ -80,7 +81,7 @@ def login_request(request):
 
 def logout_request(request):
     logout(request)
-    return redirect('onlinecourse:index')
+    return redirect('onlinecourse:index') 
 
 
 def check_if_enrolled(user, course):
