@@ -1,0 +1,54 @@
+[33mcommit 1080960bae311a5d397114a14bd9d579e687d018[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Wed Jun 19 13:50:12 2024 -0500
+
+    Stashing changes before filter-branch
+
+[33mcommit 0e2934f10fbcdd7da0ff55755b06de5b647bd5a0[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Sun Jun 16 08:35:08 2024 -0500
+
+    Updated views.py with the latest changes
+
+[33mcommit 08c3df153b409f23c949921142b1fefdf6970ee1[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Sun Jun 16 03:05:03 2024 -0500
+
+    Refined the welcome paragraph
+
+[33mcommit 41fb4c3ced753c4d414117245e22892664a8ab2c[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Sat Jun 15 13:43:50 2024 -0400
+
+    Added Exam Section
+
+[33mcommit 5ddd2c34e0e8c6e94e146f7f4845d08a58ad1b63[m
+Merge: 13badf0 85c7dae
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Sat Jun 15 12:14:47 2024 -0400
+
+    Resolved merge conflict in README.md
+
+[33mcommit 85c7daeeadb9a155e9ac103171b71f94c2bb87b9[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Fri Jun 14 00:40:50 2024 -0400
+
+    Add initial migration file
+
+[33mcommit 274920e7e7d0a6499f5afadfd360873db2afc831[m
+Author: ghazikhalil40 <151388606+ghazikhalil40@users.noreply.github.com>
+Date:   Fri Jun 14 00:00:17 2024 -0500
+
+    Initial commit
+
+[33mcommit 13badf0dc7c4dbf919dd83a8cbf06cb11ae15711[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Fri Jul 28 16:32:11 2023 +0100
+
+    initial commit
+
+[33mcommit b32d0745716ebe67c3f02ec8ea72fcc3ad223aab[m
+Author: ghazikhalil40 <ghazikhalil40@yahoo.com>
+Date:   Fri Jul 28 00:50:57 2023 -0400
+
+    Initial commit
